@@ -7,6 +7,8 @@ use App\Filament\Resources\ResumeRowResource\Pages;
 use App\Filament\Resources\ResumeRowResource\RelationManagers;
 use App\Models\ResumeRow;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
@@ -28,6 +30,11 @@ class ResumeRowResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?string $pluralModelLabel = 'Объекты учёта';
+    protected static ?string $modelLabel = 'объект учёта';
+
+    protected static ?int $navigationSort = 1;
+
     public static function getGloballySearchableAttributes(): array
     {
         return ['job_title', 'job_description', 'date_start', 'date_end'];
@@ -39,19 +46,28 @@ class ResumeRowResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(1)
                     ->schema([
-                        DatePicker::make('date_start')
-                            ->label("Дата начала работы")
-                            ->required()
-                            ->maxDate(now()),
-                        DatePicker::make('date_end')
-                            ->label("Дата окончания работы")
-                            ->required()
-                            ->maxDate(now()),
-                        TextInput::make('job_title')
-                            ->label("Название работы"),
-                        RichEditor::make('job_description')
-                            ->label("Описание")
-                            ->helperText('Опишите Ваши должностные обязанности и достижения'),
+                        Fieldset::make('Данные объекта учёта')
+                            ->schema([
+                                DatePicker::make('date_start')
+                                    ->label("Дата начала работы")
+                                    ->required()
+                                    ->maxDate(now()),
+                                DatePicker::make('date_end')
+                                    ->label("Дата окончания работы")
+                                    ->required()
+                                    ->maxDate(now()),
+                            ])->columns(2),
+                        Forms\Components\Select::make('company_id')
+                            ->relationship('company', 'name')
+                            ->required(),
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('job_title')
+                                    ->label("Название работы"),
+                                RichEditor::make('job_description')
+                                    ->label("Описание")
+                                    ->helperText('Опишите Ваши должностные обязанности и достижения'),
+                            ]),
 //                Hidden::make('user_id')->value(Auth::user()->id)
                     ])
             ]);

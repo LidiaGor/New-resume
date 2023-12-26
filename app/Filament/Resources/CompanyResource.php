@@ -26,7 +26,7 @@ class CompanyResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('company')
+                TextInput::make('name')
                     ->label("Название компании"),
             ]);
     }
@@ -35,7 +35,7 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('company')->label("Название организации")
+                TextColumn::make('name')->label("Название организации")
                     ->sortable()
                     ->searchable(),
             ])
