@@ -30,8 +30,8 @@ class ResumeRowResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    protected static ?string $pluralModelLabel = 'Объекты учёта';
-    protected static ?string $modelLabel = 'объект учёта';
+    protected static ?string $pluralModelLabel = 'Информация о местах работы';
+    protected static ?string $modelLabel = 'Место работы';
 
     protected static ?int $navigationSort = 1;
 
@@ -46,7 +46,7 @@ class ResumeRowResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(1)
                     ->schema([
-                        Fieldset::make('Данные объекта учёта')
+                        Fieldset::make('Информация о месте работы')
                             ->schema([
                                 DatePicker::make('date_start')
                                     ->label("Дата начала работы")
@@ -59,6 +59,7 @@ class ResumeRowResource extends Resource
                             ])->columns(2),
                         Forms\Components\Select::make('company_id')
                             ->relationship('company', 'name')
+                            ->label("Название организации")
                             ->required(),
                         Grid::make(2)
                             ->schema([
