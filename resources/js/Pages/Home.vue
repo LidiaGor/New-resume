@@ -8,14 +8,14 @@
         >
             <div class="grid grid-cols-12">
                 <div class="col-start-1 col-end-2">
-                    <div class="font-bold px-3 py-5">{{
+                    <div class="font-bold px-3 py-5 text-xl">{{
                             moment(row.date_start, "YYYY-MM-DD HH:mm:ss").format('MM.YYYY')
                         }}-{{ moment(row.date_end, "YYYY-MM-DD HH:mm:ss").format('MM.YYYY') }}
                     </div>
                 </div>
                 <div class="col-start-3 col-end-12">
-                    <div class="font-bold py-5 px-3">{{ row.company?.name }}</div>
-                    <div class="font-bold py-5 px-3">{{ row.job_title }}</div>
+                    <div class="font-bold py-5 px-3 text-3xl">{{ row.company?.name }}</div>
+                    <div class="font-italian py-5 px-3 text-2xl">{{ row.job_title }}</div>
                     <div class="px-3">
                         <div v-html="row.job_description"></div>
                     </div>
