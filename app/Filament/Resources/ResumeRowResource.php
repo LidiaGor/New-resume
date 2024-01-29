@@ -59,12 +59,12 @@ class ResumeRowResource extends Resource
                             ])->columns(2),
                         Forms\Components\Select::make('company_id')
                             ->relationship('company', 'name')
-                            ->label("Название организации")
+                            ->label("Название компании")
                             ->required(),
                         Grid::make(2)
                             ->schema([
                                 TextInput::make('job_title')
-                                    ->label("Название работы"),
+                                    ->label("Название должности"),
                                 RichEditor::make('job_description')
                                     ->label("Описание")
                                     ->helperText('Опишите Ваши должностные обязанности и достижения'),

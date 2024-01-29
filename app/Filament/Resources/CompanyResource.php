@@ -20,6 +20,8 @@ class CompanyResource extends Resource
     protected static ?string $model = Company::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $pluralModelLabel = 'Информация о компаниях';
+    protected static ?string $modelLabel = 'Компания';
 
     protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
@@ -35,7 +37,7 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label("Название организации")
+                TextColumn::make('name')->label("Название компании")
                     ->sortable()
                     ->searchable(),
             ])
