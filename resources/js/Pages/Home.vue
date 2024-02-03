@@ -7,7 +7,7 @@
             v-for="row in props.resumeRows"
         >
             <div class="grid grid-cols-12">
-                <div class="col-start-3 3 bg-slate-100">
+                <div class="col-start-3 bg-slate-100">
                     <div class="font-bold px-3 py-5 text-xl">{{
                             moment(row.date_start, "YYYY-MM-DD HH:mm:ss").format('MM.YYYY')
                         }}-{{ moment(row.date_end, "YYYY-MM-DD HH:mm:ss").format('MM.YYYY') }}
